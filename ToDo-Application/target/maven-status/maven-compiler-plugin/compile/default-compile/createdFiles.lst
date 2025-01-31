@@ -1,0 +1,13 @@
+com\todolist\ToDo\Application\Service\ToDoService.class
+com\todolist\ToDo\Application\ToDoApplication.class
+com\todolist\ToDo\Application\HandleException\package-info.class
+com\todolist\ToDo\Application\HandleException\ThymeleafExceptionHandler.class
+com\todolist\ToDo\Application\Repository\ToDoRepository.class
+com\todolist\ToDo\Application\Controller\package-info.class
+com\todolist\ToDo\Application\HandleException\ValidationExceptionHandler.class
+com\todolist\ToDo\Application\Entity\package-info.class
+com\todolist\ToDo\Application\Controller\ToDoController.class
+com\todolist\ToDo\Application\HandleException\TaskNotFoundException.class
+com\todolist\ToDo\Application\Entity\ToDoEntity.class
+com\todolist\ToDo\Application\Service\package-info.class
+com\todolist\ToDo\Application\Repository\package-info.class

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Task</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        header {
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 15px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .error {
+            color: #ff0000;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #007bff;
+            font-size: 14px;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Add New Task</h1>
+    </header>
+    <div class="container">
+        <!-- Display success or failure message if available -->
+        <p th:if="${message != null}" class="success-message" th:text="${message}"></p>
+
+        <!-- Form to add a new task -->
+        <form th:action="@{/todo/addtask}" method="post" th:object="${task}">
+            <div class="form-group">
+                <label for="taskId">Task ID:</label>
+                <input type="number" id="taskId" th:field="*{taskId}" required />
+                <div th:if="${#fields.hasErrors('taskId')}" class="error" th:errors="*{taskId}"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="taskName">Task Name:</label>
+                <input type="text" id="taskName" th:field="*{taskName}" required />
+                <div th:if="${#fields.hasErrors('taskName')}" class="error" th:errors="*{taskName}"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="taskDescription">Task Description:</label>
+                <textarea id="taskDescription" th:field="*{taskDescription}" required></textarea>
+                <div th:if="${#fields.hasErrors('taskDescription')}" class="error" th:errors="*{taskDescription}"></div>
+            </div>
+
+            <button type="submit">Add Task</button>
+        </form>
+
+        <!-- Link to go back to the task list page -->
+        <a href="/todo/gettaskList">Back to Task List</a>
+    </div>
+</body>
+</html>
